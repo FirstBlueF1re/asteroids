@@ -13,12 +13,18 @@ y = (SCREEN_HEIGHT / 2)
 Player1 = Player(x, y)
 
 while True:
+	dt = (clock.tick(60) / 1000)
+
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+			raise SystemExit
+
 	log_state()
-	#this is where the exit code would go for closing a window...if it worked...
 	screen.fill("black")
+	Player1.update(dt)
 	Player1.draw(screen)
 	pygame.display.flip()
-	dt = ( clock.tick(60) / 1000 )
 
 def main():
 	print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
