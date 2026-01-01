@@ -40,6 +40,13 @@ while True:
 	screen.fill("black")
 	updatable.update(dt)
 	for i in asteroids:
+		for x in shots:
+			if x.collides_with(i):
+				log_event("asteroid_shot")
+				x.kill()
+				i.split()
+
+	for i in asteroids:
 		if i.collides_with(Player1):
 			log_event("player_hit")
 			print("Game over!")
